@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Utilizando serviço de IA do IBM WATSOM</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-requisicao-ajax.js"></script>
+<script src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+<script src="http://static.fusioncharts.com/code/latest/fusioncharts.powercharts.js"></script>
+<script src="https://37ec0bd50491a7a1c59469c0fcb527cd3211d3e2.googledrive.com/host/0B0Oqi1QalkKRLVcyWWtVXzNod0E/fusioncharts-jquery-plugin.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/teste.css">
+</head>
+
+<body style=" background-color: #293946">
+<div>
+
+</div>
+
+<div style="margin-top:2%">
+
+<div style="float:left; position:relative; text-align:center; margin:2%; color:white">
+<h2>Utilizando serviço de IA do IBM WATSON</h2>
+<label>Digite seu texto abaixo</label>
+<textarea id="text-painel" class="painelShow" style="color:black;"></textarea>
+<button type="button" id="btnEnviar" class="btn btn-lg btn-default">Enviar</button>
+</div>
+
+<!-- <div class="content"></div> -->
+<div style="float:left;  height:518px; width:720px; padding: 1%; overflow-y: scroll;">
+
+<div>
+<div class="radar-chart-emocao" style="width:630px; float:left; position:relative; " ></div>
+<div class="info" data-toggle="modal" data-target="#modal-emocao">I<br>N<br>F<br>O<br>M<br>A<br>R<br>Ç<br>Õ<br>E<br>S</div>
+</div>
+
+<div>
+<div class="radar-chart-tendencia-social" style="width:630px; float:left; position:relative;"></div>
+<div class="info" data-toggle="modal" data-target="#modal-tendencia-social">I<br>N<br>F<br>O<br>M<br>A<br>R<br>Ç<br>Õ<br>E<br>S</div>
+</div>
+
+<div>
+<div class="radar-chart-estilo-linguagem" style="width:630px; float:left;  position:relative;"></div>
+<div class="info" data-toggle="modal" data-target="#modal-estilo-linguagem">I<br>N<br>F<br>O<br>M<br>A<br>R<br>Ç<br>Õ<br>E<br>S</div>
+</div>
+
+</div>
+</div>
+
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-emocao" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sentimentos/Emoção</h4>
+        </div>
+        <div class="modal-body">
+          <p>tom emocional é inferida a partir de diferentes tipos de emoções e sentimentos que as pessoas expressem na língua deles. Para cada uma destas emoções, o serviço gera uma pontuação que se situa entre 0 e 1 que indica a probabilidade de que a emoção veio em frente no texto. Nesta tabela, o valor baixo descreve o menor a pontuação de uma frase ou documento pode receber e ainda pode ser considerado para conter a emoção. O alto valor descreve quando a sentença ou documento tem uma alta probabilidade de pertencer a essa emoção.</p>
+        <table>
+	<tbody><tr>
+		<th>Emoção</th>
+		<th>Descrição</th>
+		<th>Baixo valor</th>
+		<th>Valor alto</th>
+	</tr>
+	<tr>
+		<td>alegria</td>
+		<td>Alegria ou felicidade tem tons de prazer, satisfação e prazer. Há uma sensação de bem-estar, a paz interior, amor, segurança e contentamento.</td>
+		<td>Menos de 0,5 - menos susceptível de ser percebida como alegre.</td>
+		<td>Mais de 0,75 - altamente susceptível de ser percebido como alegre.</td>
+	</tr>
+	<tr>
+		<td>medo</td>
+		<td>Uma resposta ao perigo iminente. É um mecanismo de sobrevivência que é uma reacção a um estímulo negativo. Pode ser uma advertência leve ou uma fobia extrema.</td>
+		<td>Menos de 0,5 - menos propensos a ser percebida como medo.</td>
+		<td>Mais de 0,75 - altamente susceptível de ser percebida como medo.</td>
+	</tr>
+	<tr>
+		<td>tristeza</td>
+		<td>Indica um sentimento de perda e de desvantagem. Quando uma pessoa pode ser observado para ficar quieto, menos enérgico e retraído, pode-se inferir que existe tristeza.</td>
+		<td>Menos de 0,5 - menos propensos a ser percebida como triste.</td>
+		<td>Mais de 0,75 - altamente susceptível de ser percebido como triste.</td>
+	</tr>
+	<tr>
+		<td>desgosto</td>
+		<td>Uma resposta emocional de repulsa a algo considerado ofensivo ou desagradável. É uma sensação que se refere a algo revoltante.</td>
+		<td>Menos de 0,5 - menos propensos a ser percebida como nojo.</td>
+		<td>Mais de 0,75 - altamente susceptível de ser percebido como nojo.</td>
+	</tr>
+	<tr>
+		<td>raiva</td>
+		<td>Evocados devido à injustiça, conflito, humilhação, negligência ou traição. Se a raiva é ativo, o indivíduo ataca o alvo, verbal ou fisicamente. Se a raiva é passivo, a pessoa silenciosamente sulks e sente a tensão e hostilidade.</td>
+		<td>Menos de 0,5 - menos propensos a ser percebida como raiva.</td>
+		<td>Mais de 0,75 - altamente susceptível de ser percebido como raiva.</td>
+	</tr>
+	</tbody></table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    <div class="modal fade" id="modal-tendencia-social" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Tendências Sociais</h4>
+        </div>
+        <div class="modal-body">
+          <p>tom social mede as tendências sociais por escrito das pessoas. Tone Analyzer responde com análise em cinco tons sociais diferentes: abertura, conscienciosidade, extroversão, afabilidade e escala emocional (ou neurose). Estes cinco tons sociais são adotadas froma o modelo de personalidade Big-five. Para cada uma destas categorias, o serviço gera uma pontuação de 0 a 1 que indica tendência para os comportamentos listados.</p>
+        <table>
+	<tbody><tr>
+		<th>Tom</th>
+		<th>Descrição</th>
+		<th>Baixo valor</th>
+		<th>Valor alto</th>
+	</tr>
+	<tr>
+		<td>abertura</td>
+		<td>A medida que uma pessoa está aberta para experimentar uma variedade de actividades.</td>
+		<td>Menos de 0,25 - mais propensos a ser percebido como no-nonsense, simples, sem corte, ou a tradição preferindo ea óbvia sobre o complexo, ambíguo, e sutil.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como intelectual, Curioso, emocionalmente-aware, imaginativo, disposto a tentar coisas novas, beleza apreciando, ou aberto a mudanças.</td>
+	</tr>
+	<tr>
+		<td>conscienciosidade</td>
+		<td>A tendência a agir de uma forma organizada ou pensativo.</td>
+		<td>Menos de 0,25 - mais propensos a ser percebida como espontâneo, descontraído, imprudente, desordenado, negligente, ou desorganizado.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como disciplinado, obediente, conquista-esforço, confiante, impulsionado, ou organizada.</td>
+	</tr>
+	<tr>
+		<td>extroversão</td>
+		<td>A tendência para procurar a estimulação na companhia de outros.</td>
+		<td>Menos de 0,25 - mais propensos a ser percebido como independente, tímido, introvertido, contido, chato, ou triste.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como envolvente, em busca de atenção, carente, assertivo, extrovertida, sociável, alegre, emoção, buscando, ou ocupado.</td>
+	</tr>
+		<tr>
+		<td>agreeableness</td>
+		<td>A tendência para ser compassivo e cooperativo para com os outros. </td>
+		<td>Menos de 0,25 - mais propensos a ser percebida como egoísta, indiferente, não cooperativos, auto-interessado, de confronto, cético, ou arrogante.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como cuidar, Simpático, cooperativa, comprometendo, de confiança, ou humilde.</td>
+	</tr>
+		<tr>
+		<td>escala emocional</td>
+		<td>emoção na medida uma persona € ™ s é sensível ao meio ambiente.</td>
+		<td>Menos de 0,25 - mais propensos a ser percebida como calma, sem graça, conteúdo, relaxado, despreocupado, ou cuidado.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como causa, frustrado, irritado, apaixonado, chateado, estressado, inseguro, ou impulsivo.</td>
+	</tr>
+</tbody></table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+    <div class="modal fade" id="modal-estilo-linguagem" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Estilo de Linguagem</h4>
+        </div>
+        <div class="modal-body">
+          <p>Descreve estilo percebida por escrito o uso dessas categorias: estilo analítico, estilo de raciocínio, e confiança. Para cada uma destas categorias, o serviço gera uma pontuação de 0 a 1 indica que a tendência para ser percebida como descrito na tabela.</p>
+        <table>
+	<tbody><tr>
+		<th>Estilo</th>
+		<th>Descrição</th>
+		<th>Baixo valor</th>
+		<th>Valor alto</th>
+	</tr>
+	<tr>
+		<td>Analítico</td>
+		<td>O raciocínio de uma pessoa e atitude analítica sobre as coisas.</td>
+		<td>Menos de 0,25 - o texto contém pouca ou nenhuma evidência de tom analítica.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como intelectual, racional, sistemático, sem emoção, ou impessoal.</td>
+	</tr>
+	<tr>
+		<td>Confiança</td>
+		<td>A pessoas grau de certeza.</td>
+		<td>Menos de 0,25 - o texto contém pouca ou nenhuma evidência de confiança no tom.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como assegurou, recolhido, esperançoso, ou egoísta.</td>
+	</tr>
+	<tr><td>experimental</td>
+		<td>Uma pessoas grau de inibição.</td>
+		<td>Menos de 0,25 - o texto contém pouca ou nenhuma evidência de tentativeness no tom.</td>
+		<td>Mais de 0,75 - mais propensos a ser percebida como questionável, duvidosa, limitado ou discutível.</td>
+	</tr>
+		
+</tbody></table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
