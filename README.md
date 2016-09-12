@@ -14,7 +14,7 @@ tristeza e desgosto. Tendências sociais identificadas incluem coisas dos Big Fi
 Estes incluem a abertura, conscienciosidade, extroversão, afabilidade e gama emocional. Os Estilos de escrita identificados
 incluem confiança, analítico e experimental."
 
-Instruções de Configurações:
+Instruções de Configuração:
 
 Antes baixar e executar o projeto, cadastre-se no site [Bluemix](https://console.ng.bluemix.net/) da IBM.
 No Menu inicial do Bluemix, acesse "Usar Serviços ou APIs" e posteriormente "Tone Analyzer".
