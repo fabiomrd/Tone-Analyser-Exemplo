@@ -22,7 +22,7 @@ public class TesteExemplo {
 	    public String getIt(String text) {
 
 			ToneAnalyzer service = new ToneAnalyzer(ToneAnalyzer.VERSION_DATE_2016_05_19);
-			service.setUsernameAndPassword("yourUser", "youPassword");
+			service.setUsernameAndPassword("yourUsername", "yourPassword");
 
 			// Call the service and get the tone
 			ToneAnalysis tone = service.getTone(text, null).execute();
